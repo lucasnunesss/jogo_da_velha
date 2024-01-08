@@ -1,0 +1,154 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+ 
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+ 
+  
+}
+
+h1{
+  margin-top: 10em;
+}
+
+.linha{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  padding-left: 10em;
+  padding-right: 10em;
+}
+
+label{
+  margin-top: 2em;
+  border: 5px solid black;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  height: 130px;
+  font-size: 3em;
+  flex-shrink: 0;
+  background-color: rgb(223, 121, 121);
+}
+
+input{
+  margin: 1em;
+}
+
+
+
+.primeColor{
+  background-color: rgb(223, 121, 121);
+
+  
+}
+
+.secondColor{
+  background-color: rgb(105, 202, 105);
+
+}
+
+.a{
+  background-color: rgb(223, 121, 121);
+
+  position: relative;
+  top: 50px;
+}
+
+.b{
+  background-color: rgb(105, 202, 105);
+ 
+  position: relative;
+  left: 400px;
+ 
+  bottom: 50px;
+  
+}
+
+main > button{
+  width: 200px;
+  height: 60px;
+  margin: auto;
+  margin-top: 2em;
+  border-radius: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#play{
+  background-color: rgb(98, 98, 233);
+  display: inline;
+}
+
+#ia{
+  background-color: rgb(121, 236, 211);
+  display: inline;
+}
+
+
+input{
+  margin-top: 1.2em;
+  font-size: x-large;
+ 
+ 
+}
+table {
+  margin: auto;
+  min-width: 200px;
+  height: 200px;
+
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 4em;
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+
+
+
+tr{
+  border-bottom: 3px solid black;
+  cursor: pointer;
+  flex-shrink: 0;
+
+}
+
+tr, td{
+  min-width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+td{
+  border-left: 3px solid black;
+  cursor: pointer;
+  
+}
+
+td:hover{
+  background-color: blue;
+}
+
+.lastLine{
+  border-bottom: none;
+}
+
+.leftLine{
+ border: none;
+}
+.hide{
+  display:none;
+}
+
+.show{
+  font-size: 3em;
+  margin: auto;
+  text-align: center;
+}

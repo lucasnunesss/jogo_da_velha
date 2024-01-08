@@ -83,7 +83,7 @@ let game = (function() {
   
       let msg
     
-      //****** LINHAS */
+      //************************* LINHAS ********************************************************/
       if(tamanho[0].textContent === 'X' && tamanho[1].textContent === 'X' && tamanho[2].textContent === 'X'){
         msg = `${player1} ganhou!`
         cria(msg)    
@@ -97,6 +97,33 @@ let game = (function() {
       if(tamanho[6].textContent === 'X' && tamanho[7].textContent === 'X' && tamanho[8].textContent === 'X'){
         msg = `${player1} ganhou!`
         cria(msg) 
+      }
+
+      //********************* COLUNAS *********************/ 
+      if(tamanho[0].textContent === 'X' && tamanho[3].textContent === 'X' && tamanho[6].textContent === 'X'){
+        msg = `${player1} ganhou!`
+        cria(msg)    
+      }
+
+      if(tamanho[1].textContent === 'X' && tamanho[4].textContent === 'X' && tamanho[7].textContent === 'X'){
+        msg = `${player1} ganhou!`
+        cria(msg)    
+      }
+
+      if(tamanho[2].textContent === 'X' && tamanho[5].textContent === 'X' && tamanho[8].textContent === 'X'){
+        msg = `${player1} ganhou!`
+        cria(msg)    
+      }
+
+      //***************************DIAGONAL **************************** */
+      if(tamanho[0].textContent === 'X' && tamanho[4].textContent === 'X' && tamanho[8].textContent === 'X'){
+        msg = `${player1} ganhou!`
+        cria(msg)    
+      }
+
+      if(tamanho[2].textContent === 'X' && tamanho[4].textContent === 'X' && tamanho[6].textContent === 'X'){
+        msg = `${player1} ganhou!`
+        cria(msg)    
       }
       
      }

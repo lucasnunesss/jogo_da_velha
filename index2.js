@@ -27,6 +27,7 @@ let game = (function() {
       } else {
       main.classList.add('hide')
       table.classList.remove('hide') 
+     
       }
    
     }
@@ -36,6 +37,7 @@ let game = (function() {
     
     player.name = name
     player.symbol = symbol
+    
    
     
     return player
@@ -58,14 +60,16 @@ let game = (function() {
   
    
     tamanho.forEach((item) => item.addEventListener('click', e => {
-     
+      
       let player1 = player(playerOne.value, 'X')
       let player2 = player(playerTwo.value, 'O')
+      
       h2.innerText = player1.name
       second.innerText = player2.name
       console.log(player1.name)
     
       if(user1 === user2 && item.innerText === ''){
+        
         item.value = player1.symbol 
        item.textContent = player1.symbol 
         user1++     
@@ -94,10 +98,11 @@ let game = (function() {
       start()
   
       let msg
-    
+      
       //************************* LINHAS ********************************************************/
       if(tamanho[0].textContent === 'X' && tamanho[1].textContent === 'X' && tamanho[2].textContent === 'X'){
         msg = `${player1} ganhou!`
+        h3.style.color = 'Red'
         cria(msg)    
       } else {
 
@@ -192,6 +197,9 @@ let game = (function() {
           cria(msg) 
         }
 
+        if(msg === `${player2} ganhou!`){
+          console.log('afdadqeqwe')
+        }
         
     }
     let h3 = document.querySelector('h3')
@@ -208,6 +216,7 @@ let game = (function() {
         div.classList.remove('hide')
         div.classList.add('show')      
         h3.innerText = msg
+       
         reinicio()
        
       } 

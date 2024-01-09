@@ -156,3 +156,7 @@ td:hover{
 .des{
   pointer-events: none;
 }
+
+.teste{
+  color: red;
+}

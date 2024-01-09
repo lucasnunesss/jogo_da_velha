@@ -2,7 +2,7 @@ let tabuleiro = []
 
 
 let game = (function() {
-  
+      
       let tamanho = document.querySelectorAll('td')
       const table = document.querySelector('table')  
       const play = document.querySelector('#play')
@@ -11,23 +11,26 @@ let game = (function() {
       let playerTwo = document.querySelector('#player2')
       let h2 = document.querySelector('.player1')
       let second = document.querySelector('.player2')
+      
       table.appendChild(h2)
       table.appendChild(second)
       h2.classList.add('a')
       second.classList.add('b')
-      play.addEventListener('click', e => {
-        if(playerOne.value === '' || playerTwo.value === ''){
-          console.log('aadasd')
-        } else {
-        main.classList.add('hide')
-        table.classList.remove('hide')
-     
-        }
-       
-      })
-      
 
-    console.log(tamanho)
+      play.addEventListener('click', start)
+    
+
+    function start(e){
+
+      if(playerOne.value === '' || playerTwo.value === ''){
+        console.log('aadasd')
+      } else {
+      main.classList.add('hide')
+      table.classList.remove('hide') 
+      }
+   
+    }
+ 
    function player(name, symbol){
     let player = Object.create({});
     
@@ -43,43 +46,52 @@ let game = (function() {
 
 
    
-    
+   
    
 
   
    
-      
+   let clicks = 0
    let user1 = 0
    let user2 = 0
    function clickEvent(){
- 
-
-    tamanho.forEach((item) => item.addEventListener('click', e => {
+  
    
+    tamanho.forEach((item) => item.addEventListener('click', e => {
+     
       let player1 = player(playerOne.value, 'X')
       let player2 = player(playerTwo.value, 'O')
       h2.innerText = player1.name
       second.innerText = player2.name
       console.log(player1.name)
+    
       if(user1 === user2 && item.innerText === ''){
-       item.textContent = player1.symbol
-      
-        user1++
-        console.log(user1)
+        item.value = player1.symbol 
+       item.textContent = player1.symbol 
+        user1++     
+        clicks++
+        item.classList.add('des')
+       console.log(clicks)
       } else if (user1 > user2 && item.innerText === ''){
+        item.value = player2.symbol 
         item.innerText = player2.symbol
-        user2++
+        user2++  
+        clicks++
+        item.classList.add('des')
+        console.log(clicks)    
       }
-      
-      console.log('o valor dele é ' + tamanho[0].value)
-       jogar(player1.name, player2.name)
-          
-    }))
 
+  
+       jogar(player1.name, player2.name, clicks)
+       
+       
+    }))
+   
   }
   clickEvent()
-    function jogar(player1, player2){
-      
+  
+    function jogar(player1, player2,warning){
+      start()
   
       let msg
     
@@ -87,6 +99,8 @@ let game = (function() {
       if(tamanho[0].textContent === 'X' && tamanho[1].textContent === 'X' && tamanho[2].textContent === 'X'){
         msg = `${player1} ganhou!`
         cria(msg)    
+      } else {
+
       }
 
       if(tamanho[3].textContent === 'X' && tamanho[4].textContent === 'X' && tamanho[5].textContent === 'X'){
@@ -116,35 +130,117 @@ let game = (function() {
       }
 
       //***************************DIAGONAL **************************** */
+      
       if(tamanho[0].textContent === 'X' && tamanho[4].textContent === 'X' && tamanho[8].textContent === 'X'){
         msg = `${player1} ganhou!`
         cria(msg)    
       }
 
-      if(tamanho[2].textContent === 'X' && tamanho[4].textContent === 'X' && tamanho[6].textContent === 'X'){
+      if(tamanho[2].textContent === 'X' && tamanho[4].textContent === 'X' && tamanho[6].textContent === 'X' ){
         msg = `${player1} ganhou!`
         cria(msg)    
       }
-      
-     }
+    
+        //************************* LINHAS ********************************************************/
+        if(tamanho[0].textContent === 'O' && tamanho[1].textContent === 'O' && tamanho[2].textContent === 'O'){
+          msg = `${player2} ganhou!`
+          cria(msg)    
+        } 
   
-      function cria(msg){
+        
+  
+        if(tamanho[3].textContent === 'O' && tamanho[4].textContent === 'O' && tamanho[5].textContent === 'O'){
+          msg = `${player2} ganhou!`
+          cria(msg) 
+        }
+       
+        if(tamanho[6].textContent === 'O' && tamanho[7].textContent === 'O' && tamanho[8].textContent === 'O'){
+          msg = `${player2} ganhou!`
+          cria(msg) 
+        }
+  
+        //********************* COLUNAS *********************/ 
+        if(tamanho[0].textContent === 'O' && tamanho[3].textContent === 'O' && tamanho[6].textContent === 'O'){
+          msg = `${player2} ganhou!`
+          cria(msg)    
+        }
+  
+        if(tamanho[1].textContent === 'O' && tamanho[4].textContent === 'O' && tamanho[7].textContent === 'O'){
+          msg = `${player2} ganhou!`
+          cria(msg)    
+        }
+  
+        if(tamanho[2].textContent === 'O' && tamanho[5].textContent === 'O' && tamanho[8].textContent === 'O'){
+          msg = `${player2} ganhou!`
+          cria(msg)    
+        }
+  
+        //***************************DIAGONAL **************************** */
+        
+        if(tamanho[0].textContent === 'O' && tamanho[4].textContent === 'O' && tamanho[8].textContent === 'O'){
+          msg = `${player2} ganhou!`
+          cria(msg)    
+        }
+  
+        if(tamanho[2].textContent === 'O' && tamanho[4].textContent === 'O' && tamanho[6].textContent === 'O' ){
+          msg = `${player2} ganhou!`
+          cria(msg)    
+        }  
+
+        if(msg !== `${player2} ganhou!` &&   msg !== `${player1} ganhou!` && clicks === 9){
+          msg = `Empate`
+          cria(msg) 
+        }
+
+        
+    }
+    let h3 = document.querySelector('h3')
       
-        let h3 = document.querySelector('h3')
-        const div = document.querySelector('#hid')
-        div.appendChild(h3)
+    const div = document.querySelector('#hid')
+    div.appendChild(h3)
+      
+   
+     
+  
+      function cria(msg){     
+        
         table.classList.add('hide')
         div.classList.remove('hide')
-        div.classList.add('show')
-        return h3.innerText = msg
+        div.classList.add('show')      
+        h3.innerText = msg
+        reinicio()
+       
       } 
+
+      
     
+      function reinicio(){
+        const btn = document.querySelector('.playAgain')
+        
+       tamanho.forEach((item) => {
+        item.innerText = ''
+        item.classList.remove('des')
+       })
+          btn.addEventListener('click', e => { 
+            user1 = 0
+            user2 = 0
+            clicks = 0
+            table.classList.remove('hide')
+            div.classList.add('hide')
+            div.classList.remove('show')
+            start()
+           
+          })
+       
+      }
   
-     
+   
     return {
-      jogar : jogar
+      jogar : jogar,
+    
     }
 })()
 
 
 game.jogar()
+

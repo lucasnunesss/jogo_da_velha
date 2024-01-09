@@ -152,3 +152,7 @@ td:hover{
   margin: auto;
   text-align: center;
 }
+
+.des{
+  pointer-events: none;
+}
